@@ -1,7 +1,7 @@
 {
     "name": "To do list",
     "short_name": "List",
-    "start_url": "https://sistolic.github.io/",
+    "start_url": "/",
     "icons": [
         {
             "src": "icon/icon-72x72.png",
