@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="style.css" rel="stylesheet">
+      <title>Lista de tareas</title>
+      <link rel="icon" href="logo.png" type="image/png">
+      <link rel="manifest" href="manifest.json">
+   </head>
+   <body>
+      <div class="title">
+         <p>Lista de tareas</p>
+      </div>
+      <input id="taskInput" placeholder="Ingresa una tarea">
+      <button id="addButton">Agregar</button>
+      <ul id="tasksList"></ul>
+      
+      <script type="text/javascript" src="script.js"></script>
+      
+      <script>
+         if('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+         }
+      </script>
+   </body>
+</html>

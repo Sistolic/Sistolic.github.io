@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+body {
+    background-color: #9341ac;
+}
+.title {
+    background-color: #58a09c;
+    width: 100%px;
+    height: 65px;
+    text-align: center;
+}
+.title p {
+    font-size: 32px;
+}
+#taskInput {
+    width: 39%;
+    margin-left: 23px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 18px;
+    border: none;
+}
+#addButton {
+    font-size: 18px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+li {
+    margin-left: 38px;
+    padding-bottom: 12px;
+    font-size: 24px;
+}
+.borrar {
+    border: none;
+    margin-left: 14px;
+    padding: 3px    ;
+    cursor: pointer;
+    font-size: 15px;
+}
