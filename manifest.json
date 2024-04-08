@@ -6,7 +6,7 @@
         {
             "src": "img/icon-72x72.png",
             "sizes": "72x72",
-            "type": "icon/png",
+            "type": "image/png",
             "purpose": "any"
         },
         {
