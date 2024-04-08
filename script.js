@@ -1,11 +1,9 @@
 var list = document.getElementById('tasksList');
-var count = 0;
 
 function addFromStorage() {
   const storedTasks = localStorage.getItem('tasks');
   if (storedTasks) {
     const tasks = JSON.parse(storedTasks);
-    count = tasks.length;
     tasks.forEach(function(task) {
       agregar(task);
     });
@@ -17,9 +15,8 @@ addFromStorage();
 document.getElementById('addButton').addEventListener('click', function() {
   const input = document.getElementById('taskInput');
   if (input.value !== '') {
-    count++;
     agregar(input.value);
-    addStorage(input.value, count);
+    addStorage(input.value);
     input.value = '';
     input.placeholder = "Ingresa la tarea";
   } else {
@@ -44,7 +41,7 @@ function agregar(contenido) {
   list.appendChild(listaItem);
 }
 
-function addStorage(elemento, count) {
+function addStorage(elemento) {
     var clave = 'tasks';
     const tasks = JSON.parse(localStorage.getItem(clave)) || [];
     tasks.push(elemento);
