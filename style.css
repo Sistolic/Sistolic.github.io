@@ -1,19 +1,9 @@
-* {
-    margin: 0;
-    padding: 0;
-    border: 0;
-}
 body {
     background-color: #9341ac;
 }
-.title {
-    background-color: #58a09c;
-    width: 100%px;
-    height: 65px;
+h1 {
     text-align: center;
-}
-.title p {
-    font-size: 32px;
+    font-size: 45px;
 }
 #taskInput {
     width: 39%;
@@ -29,15 +19,30 @@ body {
     padding: 5px 10px;
     cursor: pointer;
 }
+ul {
+    list-style-type: none;
+}
 li {
-    margin-left: 38px;
-    padding-bottom: 12px;
+    align-items: center;
+    width: 39%;
     font-size: 24px;
+    margin-bottom: 15px;
+    padding: 16px;
+    background-color: #c96161;
+    border-radius: 10px;
 }
 .borrar {
-    border: none;
+    float: right;
     margin-left: 14px;
-    padding: 3px    ;
+    padding: 3px;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 21px;
+    background-color: #bc5959;
+    box-shadow: none;
+    border-radius: 5px;
+    width: 56px;
+    height: 30px;
+}
+.borrar:hover {
+    background-color: #e23535;
 }
