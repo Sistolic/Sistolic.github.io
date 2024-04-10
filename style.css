@@ -1,21 +1,43 @@
 body {
-    background-color: #9341ac;
+    background-color: #412257;
+}
+.btn-container button {
+    margin: 10px 3px 0 15px;
+    font-style: oblique;
+}
+button {
+    border: none;
+    background-color: #7A4E9B;
+    font-size: 18px;
+    padding: 5px 17px;
+    cursor: pointer;
+    border-radius: 27px;
+}
+button:hover {
+    background-color: #85B2E0;
 }
 h1 {
     text-align: center;
     font-size: 45px;
 }
 #taskInput {
-    width: 39%;
-    margin-left: 23px;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    padding: 5px;
-    font-size: 18px;
-    border: none;
+    outline: none;
+  background-color: transparent;
+  border: 2px solid rgba(178, 107, 187, 0.631);
+  border-radius: 30px;
+  color: #eee;
+  width: 39%;
+  margin-left: 16px;
+  padding: 10px 20px;
+  font-size: 18px;
+}
+#taskInput::placeholder {
+    color: #fff;
 }
 #addButton {
-    font-size: 18px;
+    border-radius: 30px;
+    border: none;
+    font-size: 20px;
     padding: 5px 10px;
     cursor: pointer;
 }
@@ -24,25 +46,20 @@ ul {
 }
 li {
     align-items: center;
-    width: 39%;
+    width: 50%;
     font-size: 24px;
     margin-bottom: 15px;
     padding: 16px;
-    background-color: #c96161;
-    border-radius: 10px;
+    background-color: #503067;
+    border-radius: 25px;
+    color: #fff;
 }
 .borrar {
     float: right;
-    margin-left: 14px;
-    padding: 3px;
-    cursor: pointer;
     font-size: 21px;
-    background-color: #bc5959;
+    background-color: #73447D;
     box-shadow: none;
     border-radius: 5px;
     width: 56px;
     height: 30px;
-}
-.borrar:hover {
-    background-color: #e23535;
 }
