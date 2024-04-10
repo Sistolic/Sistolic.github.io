@@ -1,10 +1,10 @@
 body {
     background-color: #412257;
 }
-.btn-container button {
+/* .btn-container button {
     margin: 10px 3px 0 15px;
     font-style: oblique;
-}
+} */
 button {
     border: none;
     background-color: #7A4E9B;
