@@ -1,10 +1,15 @@
+
 body {
-    background-color: #412257;
+    background-color: #482462;
 }
+/* .session button {
+    font-style: oblique;
+    margin: 15px 5px 0 20px;
+} */
 button {
     border: none;
     background-color: #7A4E9B;
-    font-size: 18px;
+    font-size: 17px;
     padding: 5px 17px;
     cursor: pointer;
     border-radius: 27px;
@@ -25,7 +30,7 @@ h1 {
     width: 25%;
     margin-left: 16px;
     padding: 10px 20px;
-    font-size: 18px;
+    font-size: 17px;
 }
 #taskInput::placeholder {
     color: #fff;
@@ -33,40 +38,40 @@ h1 {
 #addButton {
     border-radius: 30px;
     border: none;
-    font-size: 20px;
     padding: 5px 10px;
     cursor: pointer;
 }
 .tasksDone {
     position: fixed;
-    margin-left: 55%;
     top: 0;
     bottom: 0;
-    height: 100vh;
-    left: 0;
-    background: rgba(178, 107, 187, 0.336);
-    backdrop-filter: blur(10px);
-    width: 100vh;
+    right: 0;
+    max-height: 100vh;
+    width: 103vh;
+    background: rgba(162, 90, 172, 0.183);
+    box-shadow: -5px 2px 10px rgba(146, 66, 141, 0.227);
+    backdrop-filter: blur(15px);
     transition: width 0.2s linear;
     display: none;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    padding-left: 8px;
-    max-height: 100vh;
     overflow-y: auto;
+}
+.tasksDone li {
+    margin-left: 10px;
 }
 li {
     list-style-type: none;
     align-items: center;
-    width: 90vh;
-    font-size: 21px;
-    margin-bottom: 15px;
-    padding: 16px;
-    background-color: #503067;
+    justify-content: center;
+    width: 95vh;
+    font-size: 20px;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #5c317a;
     border-radius: 25px;
     color: #fff;
-
 }
 .tasksDone #close {
     width: 0;
@@ -74,26 +79,28 @@ li {
     padding: 0;
     padding-bottom: 12px;
 }
-.deleteButton {
+.checkButton, .editButton, .deleteButton, .undoButton {
     float: right;
-    font-size: 21px;
-    background-color: #73447D;
+    background-color: #8b3f9a;
     box-shadow: none;
-    border-radius: 5px;
-    width: 48px;
-    height: 30px;
-}
-li input[type="checkbox"] {
-    border: 2px solid rgba(178, 107, 187, 0.631);
-    margin-right: 12px;
-    appearance: none;
-    cursor: pointer;
-    width: 20px;
-    height: 20px;
     border-radius: 10px;
-    margin-top: 2px;
+    width: 40px;
+    height: 30px;
+    margin-right: 5px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
-li input[type="checkbox"]:checked {
-    background-color: rgba(178, 107, 187, 0.631);
-    border-color: rgba(178, 107, 187, 0.631);
+.checkButton {
+    background-image: url(img/check-regular-24.png);
+    float: left;
+    margin-right: 10px;
+}
+.editButton {
+    background-image: url(img/edit-solid-24.png);
+}
+.deleteButton {
+    background-image: url(img/x-regular-24.png);
+}
+.undoButton {
+    background-image: url(img/undo-regular-24.png);
 }
