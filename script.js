@@ -12,7 +12,7 @@ function hideDone() {
   const tasksDone = document.querySelector('.tasksDone');
   tasksDone.style.display = 'none';
 }
-//----------------------------------------------\\
+
 var list = document.getElementById('tasksList');
 var input = document.getElementById('taskInput');
 
