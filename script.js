@@ -1,14 +1,20 @@
+// function sign_Up() {
+//   window.location.href = "php/sign_Up.php";
+// }
+// function sign_In() {
+//   window.location.href = "php/sign_In.php";
+// }
 function showDone() {
   const tasksDone = document.querySelector('.tasksDone');
   tasksDone.style.display = 'flex';
 }
-
 function hideDone() {
   const tasksDone = document.querySelector('.tasksDone');
   tasksDone.style.display = 'none';
 }
-
+//----------------------------------------------\\
 var list = document.getElementById('tasksList');
+var input = document.getElementById('taskInput');
 
 function addFromStorage() {
   const storedTasks = localStorage.getItem('tasks');
@@ -32,9 +38,8 @@ function addFromStorage() {
 addFromStorage();
 
 document.getElementById('addButton').addEventListener('click', function() {
-  const input = document.getElementById('taskInput');
   if (input.value !== '') {
-    addList(input.value, false);
+    addList(input.value);
     addStorage(input.value, false);
     input.value = '';
     input.placeholder = 'Ingresa una tarea'; 
@@ -43,28 +48,30 @@ document.getElementById('addButton').addEventListener('click', function() {
   }
 });
 
-function addList(content, isChecked) {
+function addList(content) {
   const task = document.createElement('li');
 
-  const checkbox = document.createElement('input');
-  checkbox.type = 'checkbox';
-  checkbox.checked = isChecked;
-
-  checkbox.addEventListener('change', function() {
-    updateStorage(content, checkbox.checked);
-    
-    if (checkbox.checked) {
-      addToDone(content);
-      list.removeChild(task);
-    }
+  const checkButton = document.createElement('button');
+  checkButton.classList.add('checkButton');
+  checkButton.addEventListener('click', function() {
+    addToDone(content);
+    list.removeChild(task);
+    updateStorage(content, true);
   });
 
   const text = document.createTextNode(content);
-  task.appendChild(checkbox);
+  task.appendChild(checkButton);
   task.appendChild(text);
 
+  const editButton = document.createElement('button');
+  editButton.classList.add('editButton');
+  editButton.addEventListener('click', function() {
+    input.value = content;
+    list.removeChild(task);
+    removeFromStorage(content);
+  });
+
   const deleteButton = document.createElement('button');
-  deleteButton.textContent = 'X';
   deleteButton.classList.add('deleteButton');
   deleteButton.addEventListener('click', function() {
     list.removeChild(task);
@@ -72,6 +79,7 @@ function addList(content, isChecked) {
   });
 
   task.appendChild(deleteButton);
+  task.appendChild(editButton);
   list.appendChild(task);
 }
 
@@ -96,16 +104,25 @@ function addToDone(content) {
   const task = document.createElement('li');
   const text = document.createTextNode(content);
 
+  const undoButton = document.createElement('button');
+  undoButton.classList.add('undoButton');
+  undoButton.addEventListener('click', function() {
+    addList(content, false);
+    updateStorage(content, false);
+    done.removeChild(task);
+  });
+
   const deleteButton = document.createElement('button');
-  deleteButton.textContent = 'X';
   deleteButton.classList.add('deleteButton');
   deleteButton.addEventListener('click', function() {
     done.removeChild(task);
     removeFromStorage(content);
   });
+  
+  task.appendChild(text);
 
   task.appendChild(deleteButton);
-  task.appendChild(text);
+  task.appendChild(undoButton);
   done.appendChild(task);
 }
 
