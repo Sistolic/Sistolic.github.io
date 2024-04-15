@@ -91,16 +91,16 @@ li {
     background-position: center;
 }
 .checkButton {
-    background-image: url(img/check-regular-24.png);
+    background-image: url(icon/check-regular-24.png);
     float: left;
     margin-right: 10px;
 }
 .editButton {
-    background-image: url(img/edit-solid-24.png);
+    background-image: url(icon/edit-solid-24.png);
 }
 .deleteButton {
-    background-image: url(img/x-regular-24.png);
+    background-image: url(icon/x-regular-24.png);
 }
 .undoButton {
-    background-image: url(img/undo-regular-24.png);
+    background-image: url(icon/undo-regular-24.png);
 }
