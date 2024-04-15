@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Lista de tareas</title>
-      <link href="style.css" rel="stylesheet">
-      <link rel="icon" href="logo.png" type="image/png">
-      <link rel="manifest" href="manifest.json">
-   </head>
-   <body>
-      <h1>Lista de tareas</h1>
-      <input id="taskInput" placeholder="Ingresa una tarea">
-      <button id="addButton">Agregar</button>
-      <ul id="tasksList"></ul>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de tareas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="manifest" href="manifest.json">
+  </head>
+  <body>
+    <h1>Lista de tareas</h1>
+    <input id="taskInput" placeholder="Ingresa una tarea">
+    <button id="addButton">Agregar</button>
+    <button onclick="showDone()">Hecho</button>
 
-      <script type="text/javascript" src="script.js"></script>
+    <nav class="tasksDone"><ul>
+      <li onclick="hideDone()" id="close"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+    </ul></nav>
+    
+    <ul id="tasksList"></ul>
 
-      <script>
-         if('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js')
-         }
-      </script>
-   </body>
+    <script type="text/javascript" src="script.js"></script>
+
+    <script>
+      if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js')
+      }
+    </script>
+  </body>
 </html>
