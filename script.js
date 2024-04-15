@@ -1,11 +1,30 @@
+function showDone() {
+  const tasksDone = document.querySelector('.tasksDone');
+  tasksDone.style.display = 'flex';
+}
+
+function hideDone() {
+  const tasksDone = document.querySelector('.tasksDone');
+  tasksDone.style.display = 'none';
+}
+
 var list = document.getElementById('tasksList');
 
 function addFromStorage() {
   const storedTasks = localStorage.getItem('tasks');
+  var count = 0;
+
   if (storedTasks) {
     const tasks = JSON.parse(storedTasks);
     tasks.forEach(function(task) {
-      agregar(task);
+      var index = tasks[count];
+
+      if (index.isChecked) {
+        addToDone(task.content)
+      } else {
+        addList(task.content, task.isChecked);
+      }
+      count++;
     });
   }
 }
@@ -15,44 +34,91 @@ addFromStorage();
 document.getElementById('addButton').addEventListener('click', function() {
   const input = document.getElementById('taskInput');
   if (input.value !== '') {
-    agregar(input.value);
-    addStorage(input.value);
+    addList(input.value, false);
+    addStorage(input.value, false);
     input.value = '';
-    input.placeholder = "Ingresa la tarea";
+    input.placeholder = 'Ingresa una tarea'; 
   } else {
-    input.placeholder = "Debes agregar una tarea";
+    input.placeholder = 'Debes agregar una tarea';
   }
 });
 
-function agregar(contenido) {
-  const listaItem = document.createElement('li');
-  listaItem.textContent = contenido;
+function addList(content, isChecked) {
+  const task = document.createElement('li');
 
-  const borrarButton = document.createElement('button');
-  borrarButton.textContent = 'X';
-  borrarButton.classList.add('borrar');
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.checked = isChecked;
 
-  borrarButton.addEventListener('click', function() {
-    list.removeChild(listaItem);
-    removeFromStorage(contenido);
+  checkbox.addEventListener('change', function() {
+    updateStorage(content, checkbox.checked);
+    
+    if (checkbox.checked) {
+      addToDone(content);
+      list.removeChild(task);
+    }
   });
 
-  listaItem.appendChild(borrarButton);
-  list.appendChild(listaItem);
+  const text = document.createTextNode(content);
+  task.appendChild(checkbox);
+  task.appendChild(text);
+
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = 'X';
+  deleteButton.classList.add('deleteButton');
+  deleteButton.addEventListener('click', function() {
+    list.removeChild(task);
+    removeFromStorage(content);
+  });
+
+  task.appendChild(deleteButton);
+  list.appendChild(task);
 }
 
-function addStorage(elemento) {
-    var clave = 'tasks';
-    const tasks = JSON.parse(localStorage.getItem(clave)) || [];
-    tasks.push(elemento);
-    localStorage.setItem(clave, JSON.stringify(tasks));
+function addStorage(content, isChecked) {
+  var key = 'tasks';
+  const tasks = JSON.parse(localStorage.getItem(key)) || [];
+  tasks.push({ content: content, isChecked: isChecked});
+  localStorage.setItem(key, JSON.stringify(tasks));
 }
 
-function removeFromStorage(contenido) {
+function removeFromStorage(content) {
   const storedTasks = localStorage.getItem('tasks');
   if (storedTasks) {
     const tasks = JSON.parse(storedTasks);
-    const updatedTasks = tasks.filter(task => task !== contenido);
+    const updatedTasks = tasks.filter(task => task.content !== content);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+  }
+}
+
+function addToDone(content) {
+  const done = document.querySelector('.tasksDone');
+  const task = document.createElement('li');
+  const text = document.createTextNode(content);
+
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = 'X';
+  deleteButton.classList.add('deleteButton');
+  deleteButton.addEventListener('click', function() {
+    done.removeChild(task);
+    removeFromStorage(content);
+  });
+
+  task.appendChild(deleteButton);
+  task.appendChild(text);
+  done.appendChild(task);
+}
+
+function updateStorage(content, isChecked) {
+  const storedTasks = localStorage.getItem('tasks');
+  if (storedTasks) {
+    const tasks = JSON.parse(storedTasks);
+    const updatedTasks = tasks.map(task => {
+      if (task.content === content) {
+        return { content: task.content, isChecked: isChecked };
+      }
+      return task;
+    });
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   }
 }
