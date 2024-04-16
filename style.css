@@ -113,3 +113,12 @@ li {
 .undoButton {
     background-image: url(icon/undo-regular-24.png);
 }
+@media only screen and (max-width: 600px) {
+    #tasksList li {
+        margin-left: 10px;
+        width: 85%;
+    }
+    .tasksDone {
+        width: 85%;
+    }
+}
