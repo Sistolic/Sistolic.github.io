@@ -1,3 +1,6 @@
+* {
+    padding: 0;
+}
 body {
     background-color: #482462;
 }
@@ -69,6 +72,7 @@ li {
     font-size: 20px;
     padding: 15px 15px 20px;
     margin-bottom: 10px;
+    margin-left: 42px;
     background-color: #5c317a;
     border-radius: 25px;
     color: #fff;
