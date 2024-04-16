@@ -4,13 +4,13 @@
 body {
     background-color: #482462;
 }
-.session button {
+/* .session button {
     font-style: oblique;
     margin: 15px 5px 0 20px;
 }
 .session .log_Out {
     float: right;
-}
+} */
 button {
     border: none;
     background-color: #7A4E9B;
