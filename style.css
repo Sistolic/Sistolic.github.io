@@ -46,7 +46,7 @@ h1 {
     bottom: 0;
     right: 0;
     max-height: 100vh;
-    width: 50%;
+    width: 85%;
     background: rgba(162, 90, 172, 0.183);
     box-shadow: -5px 2px 10px rgba(146, 66, 141, 0.227);
     backdrop-filter: blur(15px);
@@ -58,20 +58,21 @@ h1 {
     overflow-y: auto;
 }
 .tasksDone li {
-    width: 92%;
+    width: 95%;
     margin-left: 10px;
 }
 li {
     list-style-type: none;
     align-items: center;
     justify-content: center;
-    width: 75%;
+    width: 98%;
     font-size: 20px;
-    padding: 15px;
+    padding: 15px 15px 20px;
     margin-bottom: 10px;
     background-color: #5c317a;
     border-radius: 25px;
     color: #fff;
+    transform: translate(-2%);
 }
 .tasksDone #close {
     width: 0;
