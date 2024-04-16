@@ -1,15 +1,18 @@
-// function sign_Up() {
-//   window.location.href = "php/sign_Up.php";
-// }
-// function sign_In() {
-//   window.location.href = "php/sign_In.php";
-// }
+function sign_Up() {
+  window.location.href = "php/sign_Up.php";
+}
+function sign_In() {
+  window.location.href = "php/sign_In.php";
+}
+function log_Out() {
+  window.location.href = "php/config/log_Out.php";
+}
+const tasksDone = document.querySelector('.tasksDone');
+
 function showDone() {
-  const tasksDone = document.querySelector('.tasksDone');
   tasksDone.style.display = 'flex';
 }
 function hideDone() {
-  const tasksDone = document.querySelector('.tasksDone');
   tasksDone.style.display = 'none';
 }
 //----------------------------------------------\\
