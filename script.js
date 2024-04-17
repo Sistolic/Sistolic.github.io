@@ -77,8 +77,12 @@ function addList(content) {
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('deleteButton');
   deleteButton.addEventListener('click', function() {
-    list.removeChild(task);
-    removeFromStorage(content);
+    var _delete = prompt("¿Eliminar? (Si/No)");
+    
+    if (_delete == 'Si' || _delete == 'si') {
+      list.removeChild(task);
+      removeFromStorage(content);
+    }
   });
 
   task.appendChild(deleteButton);
@@ -118,8 +122,12 @@ function addToDone(content) {
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('deleteButton');
   deleteButton.addEventListener('click', function() {
-    done.removeChild(task);
-    removeFromStorage(content);
+    var _delete = prompt("¿Eliminar? (Si/No)");
+    
+    if (_delete == 'Si' || _delete == 'si') {
+      done.removeChild(task);
+      removeFromStorage(content);
+    }
   });
   
   task.appendChild(text);
