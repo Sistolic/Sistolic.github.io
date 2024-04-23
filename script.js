@@ -7,13 +7,13 @@
 // function log_Out() {
 //   window.location.href = "php/config/log_Out.php";
 // }
-const tasksDone = document.querySelector('.tasksDone');
+const done = document.querySelector('.done');
 
 function showDone() {
-  tasksDone.style.display = 'flex';
+  done.style.display = 'flex';
 }
 function hideDone() {
-  tasksDone.style.display = 'none';
+  done.style.display = 'none';
 }
 //----------------------------------------------\\
 var list = document.getElementById('tasksList');
@@ -21,19 +21,15 @@ var input = document.getElementById('taskInput');
 
 function addFromStorage() {
   const storedTasks = localStorage.getItem('tasks');
-  var count = 0;
 
   if (storedTasks) {
     const tasks = JSON.parse(storedTasks);
     tasks.forEach(function(task) {
-      var index = tasks[count];
-
-      if (index.isChecked) {
-        addToDone(task.content)
+      if (task.isChecked) {
+        addToDone(task.content);
       } else {
         addList(task.content, task.isChecked);
       }
-      count++;
     });
   }
 }
@@ -59,7 +55,7 @@ function addList(content) {
   checkButton.addEventListener('click', function() {
     addToDone(content);
     list.removeChild(task);
-    updateStorage(content, true);
+    updateStorage(content, content, true);
   });
 
   const text = document.createTextNode(content);
@@ -69,9 +65,13 @@ function addList(content) {
   const editButton = document.createElement('button');
   editButton.classList.add('editButton');
   editButton.addEventListener('click', function() {
-    input.value = content;
-    list.removeChild(task);
-    removeFromStorage(content);
+    var newContent = prompt("Editar", text.nodeValue);
+
+    if(newContent !== '') {
+      text.nodeValue = newContent.trim();
+      updateStorage(content, newContent, false);
+      location.reload();
+    }
   });
 
   const deleteButton = document.createElement('button');
@@ -105,7 +105,7 @@ function removeFromStorage(content) {
 }
 
 function addToDone(content) {
-  const done = document.querySelector('.tasksDone');
+  const done = document.querySelector('.done');
   const task = document.createElement('li');
   const text = document.createTextNode(content);
 
@@ -113,7 +113,7 @@ function addToDone(content) {
   undoButton.classList.add('undoButton');
   undoButton.addEventListener('click', function() {
     addList(content, false);
-    updateStorage(content, false);
+    updateStorage(content, content, false);
     done.removeChild(task);
   });
 
@@ -133,13 +133,13 @@ function addToDone(content) {
   done.appendChild(task);
 }
 
-function updateStorage(content, isChecked) {
+function updateStorage(oldContent, newContent, isChecked) {
   const storedTasks = localStorage.getItem('tasks');
   if (storedTasks) {
     const tasks = JSON.parse(storedTasks);
     const updatedTasks = tasks.map(task => {
-      if (task.content === content) {
-        return { content: task.content, isChecked: isChecked };
+      if (task.content === oldContent) {
+        return { content: newContent, isChecked: isChecked };
       }
       return task;
     });
