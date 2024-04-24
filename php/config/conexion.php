@@ -8,5 +8,5 @@
     $port=$_ENV["MYSQLPORT"];
 
     $conexion=new mysqli_connect("$host", "$user", "$password", "$db_name", "$port");
-    $conexion->set_charset('utf8');
+    // $conexion->set_charset('utf8');
 ?>
