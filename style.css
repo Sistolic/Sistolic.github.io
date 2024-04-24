@@ -125,4 +125,7 @@ li {
     .done {
         width: 85%;
     }
+    .session .log_Out {
+    float: none;
+}
 }
