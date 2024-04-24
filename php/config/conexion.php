@@ -9,3 +9,4 @@
 
     $conexion=mysqli_connect("$host", "$user", "$password", "$db_name", "$port");
     $conexion->set_charset('utf8');
+?>
