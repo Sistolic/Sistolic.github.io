@@ -1,12 +1,10 @@
 <?php
-    session_start();
+    $host="monorail.proxy.rlwy.net";
+    $user="root";
+    $password="iqIXVKwlgQhJEPYbyIgDduUnvzvpARje";
+    $db_name="railway";
+    $port="14644";
 
-    $host=$_ENV["DB_HOST"];
-    $user=$_ENV["DB_USER"];
-    $password=$_ENV["DB_PASSWORD"];
-    $db_name=$_ENV["DB_NAME"];
-    $port=$_ENV["DB_PORT"];
-
-    $conexion=new mysqli_connect("$host", "$user", "$password", "$db_name", "$port");
-    // $conexion->set_charset('utf8');
+    $conexion=mysqli_connect("$host", "$user", "$password", "$db_name", "$port");
+    $conexion->set_charset('utf8');
 ?>
