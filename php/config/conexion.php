@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     $host=$_ENV["MYSQLHOST"];
     $user=$_ENV["MYSQLUSER"];
     $password=$_ENV["MYSQL_ROOT_PASSWORD"];
