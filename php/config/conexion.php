@@ -1,4 +1,9 @@
 <?php
-    $conexion = new mysqli("monorail.proxy.rlwy.net", "root", "iqIXVKwlgQhJEPYbyIgDduUnvzvpARje", "railway", "14644");
-    $conexion->set_charset("utf8");
-// host, user, pass, db, port
+    $host=$_ENV["MYSQLHOST"];
+    $user=$_ENV["MYSQLUSER"];
+    $password=$_ENV["MYSQL_ROOT_PASSWORD"];
+    $db_name=$_ENV["MYSQL_DATABASE"];
+    $port=$_ENV["MYSQLPORT"];
+
+    $conexion=mysqli_connect("$host", "$user", "$password", "$db_name", "$port");
+    $conexion->set_charset('utf8');
