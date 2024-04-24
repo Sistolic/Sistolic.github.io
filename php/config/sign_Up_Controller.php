@@ -6,7 +6,6 @@
             $name = $_POST["name"];
             $user = $_POST["user"];
             $password = md5($_POST["password"]);
-            md5($password);
             echo $pasword;
             $sql = $conexion->query(" insert into user(user, password, name) values('$user', '$password', '$name') ");
 
