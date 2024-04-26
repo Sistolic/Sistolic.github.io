@@ -3,8 +3,13 @@
 
     if(isset($_SESSION['user'])) {
         session_destroy();
-        header("location:../sign_In.php");
+        echo '<script>window.location="../sign_In.php";</script>';
     } else {
-        header("location:../sign_In.php");
+        if(confirm("Sin sesión activa, ¿Regresar?") {
+           echo '<script>window.location="/index.php";</script>';
+        } else {
+            echo '<script>window.location="../sign_In.php";</script>';
+        }
+        
     }
 ?>
