@@ -113,6 +113,18 @@ li {
     background-image: url(icon/undo-regular-24.png);
 }
 @media only screen and (max-width: 600px) {
+    .session .log_Out {
+        float: none;
+    }
+    .session button {
+        margin: 15px 0 0 6px;
+    }
+    h1 {
+        font-size: 35px;
+    }
+    #taskInput {
+        width: 19%;
+    }
     #tasksList li {
         margin-left: 10px;
         width: 85%;
