@@ -6,11 +6,11 @@
             $name = $_POST["name"];
             $user = $_POST["user"];
             $password = md5($_POST["password"]);
-            echo $pasword;
+            
             $sql = $conexion->query(" insert into user(user, password, name) values('$user', '$password', '$name') ");
 
             if($sql == 1) {
-                header("location:sign_In.php");
+                header("location:../sign_In.php");
             } else {
                 echo '<div class="alert">Error al registrar</div>';
             }
