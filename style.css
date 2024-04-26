@@ -1,5 +1,6 @@
 * {
     padding: 0;
+    color: #000;
 }
 body {
     background-color: #482462;
@@ -29,16 +30,15 @@ h1 {
 #taskInput {
     outline: none;
     background-color: transparent;
-    border: 2px solid rgba(178, 107, 187, 0.631);
+    border: 2px solid rgba(158, 74, 154, 0.664);
     border-radius: 30px;
-    color: #eee;
     width: 25%;
     margin-left: 16px;
     padding: 10px 20px;
     font-size: 17px;
 }
 #taskInput::placeholder {
-    color: #fff;
+    color: #000;
 }
 #addButton {
     border-radius: 30px;
@@ -80,7 +80,6 @@ li {
     margin-left: 25px;
     background-color: #5c317a;
     border-radius: 25px;
-    color: #fff;
 }
 .done #close {
     width: 0;
@@ -113,19 +112,12 @@ li {
 .undoButton {
     background-image: url(icon/undo-regular-24.png);
 }
-
 @media only screen and (max-width: 600px) {
     #tasksList li {
         margin-left: 10px;
         width: 85%;
     }
-    li {
-        font-size: 19px;
-    }
     .done {
         width: 85%;
     }
-    .session .log_Out {
-    float: none;
-}
 }
