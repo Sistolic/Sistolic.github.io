@@ -86,10 +86,11 @@ body {
 
 @media only screen and (max-width: 600px) {
     .input-box img {
-        right: 20%;
+        right: 17%;
+        top: 86.8%;
     }
     .input-box .register-show {
-        right: 20%;
-        top: 59.6%;
+        right: 17%;
+        top: 120%;
     }
 }
