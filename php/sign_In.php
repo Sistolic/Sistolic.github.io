@@ -18,7 +18,7 @@
         
         if (isset($_SESSION['user'])) {
           echo '<div class="link"><p>Sesion activa <a href="config/log_Out.php">Salir</a></p></div>';
-          echo '<div class="link"><p><a href="../index.html">Volver</a></p></div>';
+          echo '<div class="link"><p><a href="../index.php">Volver</a></p></div>';
         }
         ?>
         
