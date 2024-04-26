@@ -18,7 +18,7 @@
         include 'config/sign_In_Controller.php';
 
         if (isset($_SESSION['user'])) {
-          echo '<div class="link"><p><a href="../index.html">Volver</a></p></div>';
+          echo '<div class="link"><p><a href="../index.php">Volver</a></p></div>';
         }
         ?>
         
