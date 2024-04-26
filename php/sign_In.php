@@ -13,6 +13,7 @@
         <h1>Iniciar sesión</h1>
 
         <?php
+        session_start();
         include 'config/conexion.php';
         include 'config/sign_In_Controller.php';
         
