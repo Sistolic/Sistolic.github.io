@@ -1,5 +1,4 @@
 <?php
-    session_start();
     if(!empty($_POST["login"])) {
         if(empty($_POST["user"]) or empty($_POST["password"])) {
             echo '<div class="alert">Uno de los campos esta vacio</div>';
