@@ -9,7 +9,7 @@
             
             if($datos = $sql->fetch_object()) {
                 $_SESSION['user'] = $user;
-                header("location:../index.php");
+                header("location:/index.php");
             } else {
                 echo '<div class="alert">Acceso denegado</div>';
             }
