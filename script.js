@@ -43,7 +43,7 @@ document.getElementById('addButton').addEventListener('click', function() {
     input.value = '';
     input.placeholder = 'Ingresa una tarea'; 
   } else {
-    input.placeholder = 'Debes agregar una tarea';
+    alert("Debes agregar una tarea");
   }
 });
 
@@ -65,11 +65,11 @@ function addList(content) {
   const editButton = document.createElement('button');
   editButton.classList.add('editButton');
   editButton.addEventListener('click', function() {
-    var newContent = prompt("Editar", text.nodeValue);
-
-    if(newContent !== '') {
+    const newContent = prompt('Editar tarea:', text.nodeValue.trim());
+    
+    if (newContent !== '') {
       text.nodeValue = newContent.trim();
-      updateStorage(content, newContent, false);
+      updateStorage(content, newContent.trim(), false);
       location.reload();
     }
   });
