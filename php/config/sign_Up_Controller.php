@@ -10,7 +10,7 @@
             $sql = $conexion->query("INSERT INTO user(user, password, name) VALUES ('$user', '$password', '$name') ");
 
             if($sql == 1) {
-                header("Location: ../sign_In.php");
+                echo '<script>window.location="../sign_In.php";</script>';
                 exit();
             } else {
                 echo '<div class="alert">Error al registrar</div>';
