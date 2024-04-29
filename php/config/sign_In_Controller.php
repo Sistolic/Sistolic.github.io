@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    include '../sign_In.php';
 
     if(!empty($_POST["login"])) {
         if(empty($_POST["user"]) or empty($_POST["password"])) {
