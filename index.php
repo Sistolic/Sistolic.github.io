@@ -20,7 +20,7 @@
     <button onclick="showDone()">Tareas realizadas</button>
 
     <nav class="done"><ul>
-      <button class="deleteButton" onclick="hideDone()"></button>
+      <button class="deleteButton close" onclick="hideDone()"></button>
     </ul></nav>
     
     <ul id="tasksList"></ul>
