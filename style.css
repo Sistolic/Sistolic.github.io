@@ -82,7 +82,7 @@ li {
     background-color: #5c317a;
     border-radius: 25px;
 }
-.done .deleteButton.close {
+.done ul button {
     position: absolute;
     right: 10px;
     top: 15px;
