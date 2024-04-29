@@ -1,5 +1,5 @@
 <?php
-    include '../sign_In.php';
+    include 'conexion.php';
 
     if(!empty($_POST["login"])) {
         if(empty($_POST["user"]) or empty($_POST["password"])) {
