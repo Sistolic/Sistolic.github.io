@@ -16,6 +16,7 @@
     <div class="container">
       <form action="" method="post">
         <h1>Iniciar sesión</h1>
+
     <?php
       if (isset($_SESSION['user'])) {
         echo '<div class="link"><p>Sesion activa <a href="config/log_Out.php">Cerrar sesión</a></p></div>';
@@ -32,7 +33,7 @@
         <input class="button" type="submit" value="Iniciar sesión" name="login">
         <div class="link">
           <p>¿No tienes cuenta? <a href="sign_Up.php">Registrate</a></p>
-          <p>Continuar sin cuenta. <a href="../index.html">Volver</a></p>
+          <p>Continuar sin cuenta. <a href="/index.html">Volver</a></p>
         </div>
       </form>
     </div>
