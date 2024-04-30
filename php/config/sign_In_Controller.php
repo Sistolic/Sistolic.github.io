@@ -1,6 +1,4 @@
 <?php
-    session_start();
-
     if(!empty($_POST["login"])) {
         if(empty($_POST["user"]) or empty($_POST["password"])) {
             $message = '<div class="alert">Uno de los campos está vacío</div>';
