@@ -10,7 +10,6 @@
             if($datos = $sql->fetch_object()) {
                 $_SESSION['user'] = $user;
                 echo '<script>window.location="/index.php";</script>';
-                exit();
             } else {
                 $message = '<div class="alert">Acceso denegado</div>';
             }
