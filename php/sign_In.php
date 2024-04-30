@@ -1,10 +1,6 @@
 <?php
   include 'config/conexion.php';
   include 'config/sign_In_Controller.php';
-        
-  if (isset($_SESSION['user'])) {
-    echo '<div class="link"><p>Sesion activa <a href="config/log_Out.php">Cerrar sesión</a></p></div>';
-}
 ?>
 
 <!Doctype html>
@@ -19,7 +15,12 @@
   <body>
     <div class="container">
       <form action="" method="post">
-        <h1>Iniciar sesión</h1>  
+        <h1>Iniciar sesión</h1>
+    <?php
+      if (isset($_SESSION['user'])) {
+        echo '<div class="link"><p>Sesion activa <a href="config/log_Out.php">Cerrar sesión</a></p></div>';
+      }
+    ?>
         
         <div class="input-box">
           <input type="text" placeholder="Usuario" name="user">
