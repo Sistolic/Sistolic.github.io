@@ -1,3 +1,13 @@
+<?php
+  include 'config/conexion.php';
+  include 'config/sign_In_Controller.php';
+        
+  if (isset($_SESSION['user'])) {
+    echo '<div class="link"><p>Sesion activa <a href="config/log_Out.php">Salir</a></p></div>';
+    echo '<div class="link"><p><a href="../index.php">Volver</a></p></div>';
+}
+?>
+
 <!Doctype html>
 <html>
   <head>
@@ -10,17 +20,7 @@
   <body>
     <div class="container">
       <form action="" method="post">
-        <h1>Iniciar sesión</h1>
-
-        <?php
-        include 'config/conexion.php';
-        include 'config/sign_In_Controller.php';
-        
-        if (isset($_SESSION['user'])) {
-          echo '<div class="link"><p>Sesion activa <a href="config/log_Out.php">Salir</a></p></div>';
-          echo '<div class="link"><p><a href="../index.php">Volver</a></p></div>';
-        }
-        ?>
+        <h1>Iniciar sesión</h1>  
         
         <div class="input-box">
           <input type="text" placeholder="Usuario" name="user">
