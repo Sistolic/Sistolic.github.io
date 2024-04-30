@@ -1,7 +1,7 @@
 <?php
     if(!empty($_POST["login"])) {
         if(empty($_POST["user"]) or empty($_POST["password"])) {
-            $message = '<div class="alert">Uno de los campos está vacío</div>';
+            echo '<div class="alert">Uno de los campos está vacío</div>';
         } else {
             $user = $_POST["user"];
             $password = md5($_POST["password"]);
@@ -11,10 +11,8 @@
                 $_SESSION['user'] = $user;
                 echo '<script>window.location="/index.php";</script>';
             } else {
-                $message = '<div class="alert">Acceso denegado</div>';
+                echo '<div class="alert">Acceso denegado</div>';
             }
         }
     }
 ?>
-
-<?php if(isset($message)) echo $message; ?>
