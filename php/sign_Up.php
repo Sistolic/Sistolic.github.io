@@ -15,11 +15,6 @@
         <?php
         include 'config/conexion.php';
         include 'config/sign_Up_Controller.php';
-        include 'config/sign_In_Controller.php';
-
-        if (isset($_SESSION['user'])) {
-          echo '<div class="link"><p><a href="../index.php">Volver</a></p></div>';
-        }
         ?>
         
         <div class="input-box">
