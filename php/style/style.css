@@ -45,12 +45,20 @@ body {
 .input-box img {
     position: absolute;
     right: 39%;
-    top: 53.3%;
+    top: 52%;
     transform: translateY(-55%);
     cursor: pointer;
 }
 .input-box .register-show {
-    top: 59.6%;
+    top: 58.2%;
+}
+.input-box .user-login {
+    top: 39.4%;
+    cursor: default;
+}
+.input-box .user-register {
+    top: 45.8%;
+    cursor: default;
 }
 .container .button {
     width: 100%;
@@ -86,11 +94,10 @@ body {
 
 @media only screen and (max-width: 600px) {
     .input-box img {
-        right: 18%;
-        top: 53.5%;
+        right: 20%;
     }
     .input-box .register-show {
-        right: 18%;
+        right: 20%;
         top: 59.6%;
     }
 }
