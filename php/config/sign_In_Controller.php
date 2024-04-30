@@ -1,5 +1,5 @@
 <?php
-    include 'conexion.php';
+    session_start();
 
     if(!empty($_POST["login"])) {
         if(empty($_POST["user"]) or empty($_POST["password"])) {
