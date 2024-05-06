@@ -18,20 +18,20 @@
         ?>
         
         <div class="input-box">
-          <input type="text" placeholder="Nombre" name="name">
+          <input type="text" placeholder="Nombre" name="name" required>
         </div>
         <div class="input-box">
-          <input type="text" placeholder="Usuario" name="user">
+          <input type="text" placeholder="Usuario" name="user" required>
           <img class="user-register" src="../icon/user-regular-24.png" alt="user">
         </div>
         <div class="input-box">
-          <input class="password" type="password" placeholder="Contraseña" name="password">
+          <input class="password" type="password" placeholder="Contraseña" name="password" required>
           <a id="showPassword"><img class="register-show" id="show" src="../icon/hide-regular-24.png" alt="hide-password"></a>
         </div>
         <input class="button" type="submit" value="Registrarse" name="register">
         <div class="link">
-          <p>Ya tienes cuenta. <a href="sign_In.php">Iniciar sesión</a></p>
-          <p>Continuar sin registrarse. <a href="../index.php">Volver</a></p>
+          <p>Ya tienes cuenta. <a href="index.php">Iniciar sesión</a></p>
+          <p>Continuar sin registrarse. <a href="../index.html">Volver</a></p>
         </div>
       </form>
     </div>
