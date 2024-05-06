@@ -8,7 +8,7 @@
             
         if($datos = $sql->fetch_object()) {
             $_SESSION['user'] = $user;
-            echo '<script>window.location="/index.html";</script>';
+            echo '<script>window.location="/index.php";</script>';
         }
     }
 ?>
