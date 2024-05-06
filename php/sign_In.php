@@ -24,11 +24,11 @@
     ?>
         
         <div class="input-box">
-          <input type="text" placeholder="Usuario" name="user">
+          <input type="text" placeholder="Usuario" name="user" required>
           <img class="user-login" src="../icon/user-regular-24.png" alt="user">
         </div>
         <div class="input-box">
-          <input class="password" type="password" placeholder="Contraseña" name="password">
+          <input class="password" type="password" placeholder="Contraseña" name="password" required>
           <a id="showPassword"><img id="show" src="../icon/hide-regular-24.png" alt="hide-password"></a>
         </div>
         <input class="button" type="submit" value="Iniciar sesión" name="login">
