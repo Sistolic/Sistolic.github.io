@@ -1,20 +1,14 @@
 <?php
     if(!empty($_POST["register"])) {
-        if(empty($_POST["name"]) or empty($_POST["user"]) or empty($_POST["password"])) {
-            echo '<div class="alert">Uno de los campos está vacío</div>';
-        } else {
-            $name = $_POST["name"];
-            $user = $_POST["user"];
-            $password = md5($_POST["password"]);
+        $name = $_POST["name"];
+        $user = $_POST["user"];
+        $password = md5($_POST["password"]);
 
-            $sql = $conexion->query("INSERT INTO user(user, password, name) VALUES ('$user', '$password', '$name') ");
+        $sql = $conexion->query("INSERT INTO user(user, password, name) VALUES ('$user', '$password', '$name') ");
 
-            if($sql == 1) {
-                echo '<script>window.location="../php/sign_In.php";</script>';
-                exit();
-            } else {
-                echo '<div class="alert">Error al registrar</div>';
-            }
+        if($sql == 1) {
+            echo '<script>window.location="../php/index.php";</script>';
+            exit();
         }
     }
 ?>
