@@ -7,7 +7,7 @@
         $sql = $conexion->query("INSERT INTO user(user, password, name) VALUES ('$user', '$password', '$name') ");
 
         if($sql == 1) {
-            echo '<script>window.location="../php/index.php";</script>';
+            echo '<script>window.location="../php/sign_In.php";</script>';
             exit();
         }
     }
