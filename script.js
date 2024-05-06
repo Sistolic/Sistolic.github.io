@@ -2,7 +2,7 @@ function sign_Up() {
   window.location.href = "php/sign_Up.php";
 }
 function sign_In() {
-  window.location.href = "php/index.php";
+  window.location.href = "php/sign_In.php";
 }
 function log_Out() {
   window.location.href = "php/config/log_Out.php";
