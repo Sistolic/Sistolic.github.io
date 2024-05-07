@@ -9,6 +9,8 @@
         if($datos = $sql->fetch_object()) {
             $_SESSION['user'] = $user;
             echo '<script>window.location="/index.php";</script>';
+        } else {
+            echo '<p class="session-control denied" style="display: flex;">Acceso denegado.</p>';
         }
     }
 ?>
