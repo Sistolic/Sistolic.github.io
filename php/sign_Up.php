@@ -18,10 +18,10 @@
         ?>
         
         <div class="input-box">
-          <input type="text" placeholder="Nombre" name="name" required>
+          <input type="text" placeholder="Nombre" name="name" onkeyup="validarInput(this)" required>
         </div>
         <div class="input-box">
-          <input type="text" placeholder="Usuario" name="user" required>
+          <input type="text" placeholder="Usuario" name="user" onkeyup="validarInput(this)" required>
           <img class="user-register" src="../icon/user-regular-24.png" alt="user">
         </div>
         <div class="input-box">
