@@ -14,7 +14,9 @@
             $sql = $conexion->query(" INSERT INTO user(user, password, name) VALUES('$user', '$password', '$name') ");
                 
             if($sql == 1) {
-                header("location:sign_In.php");
+                echo '<script>window.location="../sign_In.php";</script>';
+            } else {
+                echo '<p class="session-control error" style="display: flex;">Error al registrar.</p>';
             }
         }
     }
