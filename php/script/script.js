@@ -12,3 +12,13 @@ document.getElementById('showPassword').addEventListener('click', function() {
     img.src = "../icon/hide-regular-24.png";
   }
 });
+
+function validarInput(input) {
+  var regex = /^[a-zA-Z\s]*$/;
+  var valor = input.value;
+
+  if (!regex.test(valor)) {
+    alert("No se admiten caracteres especiales");
+    input.value = valor.replace(/[^a-zA-Z\s]/g, '');
+  }
+}
