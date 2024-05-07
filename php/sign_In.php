@@ -17,14 +17,16 @@
       <form action="" method="post">
         <h1>Iniciar sesión</h1>
 
-    <?php
-      if (isset($_SESSION['user'])) {
-        echo '<div class="link"><p>Sesion activa. <a href="config/log_Out.php">Cerrar sesión</a></p></div>';
-      }
-    ?>
+        <p class="active-session" style="display: none;">Sesión activa. <a href="config/log_Out.php">Cerrar sesión</a></p>
+
+        <?php
+        if (isset($_SESSION['user'])) {
+          echo '<script>document.querySelector(".active-session").style.display = "flex";</script>';
+        }
+        ?>
         
         <div class="input-box">
-          <input type="text" placeholder="Usuario" name="user" required>
+          <input type="text" placeholder="Usuario" name="user" onkeyup="validarInput(this)" required>
           <img class="user-login" src="../icon/user-regular-24.png" alt="user">
         </div>
         <div class="input-box">
