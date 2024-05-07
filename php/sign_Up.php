@@ -31,7 +31,7 @@
         <input class="button" type="submit" value="Registrarse" name="register">
         <div class="link">
           <p>Ya tienes cuenta. <a href="sign_In.php">Iniciar sesión</a></p>
-          <p>Continuar sin registrarse. <a href="../index.php">Volver</a></p>
+          <p>Continuar sin registrarse. <a href="/">Volver</a></p>
         </div>
       </form>
     </div>
