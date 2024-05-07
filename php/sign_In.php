@@ -17,11 +17,11 @@
       <form action="" method="post">
         <h1>Iniciar sesión</h1>
 
-        <p class="active-session" style="display: none;">Sesión activa. <a href="config/log_Out.php">Cerrar sesión</a></p>
+        <p class="session-control active" style="display: none;">Sesión activa. <a href="config/log_Out.php">Cerrar sesión</a></p>
 
         <?php
         if (isset($_SESSION['user'])) {
-          echo '<script>document.querySelector(".active-session").style.display = "flex";</script>';
+          echo '<script>document.querySelector(".session-control").style.display = "flex";</script>';
         }
         ?>
         
