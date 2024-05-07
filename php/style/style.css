@@ -83,13 +83,17 @@ body {
     text-align: center;
     margin-top: 20px;
 }
-.link p a {
+.link p a, .active-session a {
     color: #fff;
     text-decoration: none;
     font-weight: 600;
 }
-.link p a:hover {
+.link p a:hover, .active-session a:hover {
     text-decoration: underline;
+}
+.container .active-session {
+    position: absolute;
+    transform: translateX(43%);
 }
 
 @media only screen and (max-width: 600px) {
