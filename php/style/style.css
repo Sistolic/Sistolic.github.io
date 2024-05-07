@@ -73,27 +73,35 @@ body {
     color: #333;
     font-weight: 600;
 }
-.container .alert {
-    text-align: center;
-    font-size: 18px;
-    margin: 5px;
-}
 .container .link {
     font-size: 14.5px;
     text-align: center;
     margin-top: 20px;
 }
-.link p a, .active-session a {
+.link p a, .session-control a {
     color: #fff;
     text-decoration: none;
     font-weight: 600;
 }
-.link p a:hover, .active-session a:hover {
+.link p a:hover, .session-control a:hover {
     text-decoration: underline;
 }
-.container .active-session {
+.session-control {
     position: absolute;
-    transform: translateX(43%);
+    color: #fff;
+    font-size: 18px;
+}
+.session-control.active {
+    transform: translateX(32.2%);
+}
+.session-control.denied {
+    transform: translateY(-550%);
+}
+.session-control.duplicate {
+    transform: translateX(82%);
+}
+.session-control.error {
+    transform: translateX(87%);
 }
 
 @media only screen and (max-width: 600px) {
