@@ -55,8 +55,8 @@ h1 {
     width: 50%;
     padding-left: 15px;
     padding-top: 25px;
-    background: rgba(81, 46, 86, 0.341);
-    box-shadow: -5px 2px 10px rgba(108, 49, 104, 0.227);
+    background: rgba(114, 16, 96, 0.301);
+    box-shadow: -5px 2px 10px rgba(155, 27, 112, 0.473);
     backdrop-filter: blur(10px);
     transition: width 0.2s linear;
     display: none;
