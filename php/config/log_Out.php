@@ -3,7 +3,7 @@
 
     if(isset($_SESSION['user'])) {
         session_destroy();
-        echo '<script>window.location="../sign_In.php";</script>';
+        echo '<script>window.location="/";</script>';
     } else {
         echo '<script>window.location="../sign_Up.php";</script>';
     }
