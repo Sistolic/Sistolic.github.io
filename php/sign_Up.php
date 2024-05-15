@@ -30,8 +30,8 @@
         </div>
         <input class="button" type="submit" value="Registrarse" name="register">
         <div class="link">
-          <p>Ya tienes cuenta. <a href="/index.php">Iniciar sesión</a></p>
-          <p>Continuar sin registrarse. <a href="/">Volver</a></p>
+          <p>Ya tienes cuenta. <a href="/">Iniciar sesión</a></p>
+          <p>Continuar sin registrarse. <a href="/index.html">Volver</a></p>
         </div>
       </form>
     </div>
