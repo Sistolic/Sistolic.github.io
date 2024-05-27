@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar sesión</title>
     <link href="php/style/style.css" rel="stylesheet">
-    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="icon" href="pwa/logo.png" type="image/png">
   </head>
   <body>
     <div class="container">
