@@ -8,12 +8,12 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #412257;
+    background: #3A0831;
 }
 .container {
     width: 420px;
     background: transparent;
-    border: 2px solid rgba(120, 64, 64, 0.371);
+    border: 2px solid rgba(109, 160, 201, 0.753);
     color: #fff;
     border-radius: 10px;
     padding: 30px 40px;
@@ -33,7 +33,7 @@ body {
     background: transparent;
     border: none;
     outline: none;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(143, 139, 211, 0.397);
     border-radius: 40px;
     font-size: 16px;
     color: #fff;
