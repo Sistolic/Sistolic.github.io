@@ -69,7 +69,7 @@ function addList(content) {
   const task = document.createElement('li');
 
   const checkButton = document.createElement('button');
-  checkButton.classList.add('checkButton');
+  checkButton.classList.add('check-button');
   checkButton.addEventListener('click', function() {
     addToDone(content);
     list.removeChild(task);
@@ -81,7 +81,7 @@ function addList(content) {
   task.appendChild(text);
 
   const editButton = document.createElement('button');
-  editButton.classList.add('editButton');
+  editButton.classList.add('edit-button');
   editButton.addEventListener('click', function() {
     const newContent = prompt('Editar tarea:', text.nodeValue.trim());
     
@@ -93,7 +93,7 @@ function addList(content) {
   });
 
   const deleteButton = document.createElement('button');
-  deleteButton.classList.add('deleteButton');
+  deleteButton.classList.add('delete-button');
   deleteButton.addEventListener('click', function() {
     if (window.confirm("¿Eliminar?")) {
       list.removeChild(task);
@@ -128,7 +128,7 @@ function addToDone(content) {
   const text = document.createTextNode(content);
 
   const undoButton = document.createElement('button');
-  undoButton.classList.add('undoButton');
+  undoButton.classList.add('undo-button');
   undoButton.addEventListener('click', function() {
     addList(content, false);
     updateStorage(content, content, false);
@@ -136,7 +136,7 @@ function addToDone(content) {
   });
 
   const deleteButton = document.createElement('button');
-  deleteButton.classList.add('deleteButton');
+  deleteButton.classList.add('delete-button');
   deleteButton.addEventListener('click', function() {
     if (window.confirm("¿Eliminar?")) {
       done.removeChild(task);
