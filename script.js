@@ -1,12 +1,30 @@
-function sign_Up() {
+function signUp() {
   window.location.href = "php/sign_Up.php";
 }
-function sign_In() {
-  window.location.href = "/";
+function signIn() {
+  window.location.href = "index.php";
 }
-function log_Out() {
-  window.location.href = "php/config/log_Out.php";
+function logOut() {
+  fetch('php/config/session.php')
+  .then(response => response.json())
+  .then(data => {
+    if(data.sesion_activa) {
+      if(window.confirm("Restaurar tareas / Salir")) {
+        userTasks();
+      } else {
+        saveToDB();
+        deleteValue();
+        window.location.href = "php/config/log_Out.php";
+      }
+    } else {
+      alert("No has iniciado sesión.");
+    }
+  })
+  .catch(error => {
+    console.error(error);
+  });
 }
+
 const done = document.querySelector('.done');
 
 function showDone() {
@@ -41,7 +59,7 @@ document.getElementById('addButton').addEventListener('click', function() {
     addList(input.value);
     addStorage(input.value, false);
     input.value = '';
-    input.placeholder = 'Ingresa una tarea'; 
+    input.placeholder = 'Ingresa una tarea';
   } else {
     alert("Debes agregar una tarea");
   }
@@ -144,5 +162,73 @@ function updateStorage(oldContent, newContent, isChecked) {
       return task;
     });
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+  }
+}
+
+function deleteValue() {
+  var tasks = JSON.parse(localStorage.getItem('tasks'));
+
+  if (tasks) {
+    tasks = [];
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+}
+
+function saveToDB() {
+  var tasksByUser = JSON.parse(localStorage.getItem('tasks'));
+
+  try {
+    if (tasksByUser.length !== 0) {
+      tasksByUser.map(task => {
+        var tasksToDB = {
+          task: task.content,
+          isChecked: task.isChecked
+        }
+        
+        fetch('php/config/config.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(tasksToDB),
+        })
+        .then(response => response.text())
+        .then(data => {
+          console.log(data);
+        })
+        .catch(error => {
+          console.error('Error al enviar datos al servidor:', error);
+        });
+      });
+    }
+  } catch(e) {
+    console.log("No hay tareas que agregar.")
+  }
+}
+
+function userTasks() {
+  fetch('php/config/config.php')
+  .then(response => response.json())
+  .then(data => {
+    if (!data.empty) {
+      data.forEach(item => {
+        intBool = bool(item.is_checked);
+        addStorage(item.task, intBool);
+      });
+      location.reload();
+    } else {
+      alert("No has guardado tareas.")
+    }
+  })
+  .catch(error => {
+    console.error("Error al obtener los datos", error);
+  });
+}
+
+function bool(int) {
+  if (int == 1) {
+    return true;
+  } else if (int == 0) {
+    return false;
   }
 }
