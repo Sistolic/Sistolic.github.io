@@ -13,8 +13,8 @@ function logOut() {
         userTasks();
       } else {
         saveToDB();
-        deleteValue();
-        window.location.href = "php/config/log_Out.php";
+        // deleteValue();
+        // window.location.href = "php/config/log_Out.php";
       }
     } else {
       alert("No has iniciado sesión.");
