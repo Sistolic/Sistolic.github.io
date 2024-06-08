@@ -12,7 +12,7 @@ if (isset($_SESSION['user'])) {
 
     try {
         $options = [
-            PDO::ATTR_TIMEOUT => 30, // Tiempo de espera en segundos
+            PDO::ATTR_TIMEOUT => 60,
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         ];
 
