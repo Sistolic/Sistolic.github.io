@@ -3,7 +3,7 @@ function signUp() {
 }
 
 function signIn() {
-    window.location.href = "index.php";
+    window.location.href = "/";
 }
 
 function logOut() {
