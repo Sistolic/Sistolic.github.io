@@ -9,7 +9,7 @@ body {
     font-style: oblique;
     margin: 15px 5px 0 20px;
 }
-.session .log_Out {
+.session .log-out {
     float: right;
 }
 button {
@@ -21,7 +21,7 @@ button {
     border-radius: 27px;
 }
 button:hover {
-    background-color: #4f286b;
+    background-color: #4F286B;
 }
 h1 {
     text-align: center;
@@ -41,9 +41,9 @@ h1 {
     color: #fff;
 }
 #addButton {
-    border-radius: 14px;
+    border-radius: 30px;
     border: none;
-    padding: 6px 10px;
+    padding: 5px 10px;
     cursor: pointer;
 }
 .done {
@@ -55,8 +55,8 @@ h1 {
     width: 50%;
     padding-left: 15px;
     padding-top: 25px;
-    background: rgba(114, 16, 96, 0.301);
-    box-shadow: -5px 2px 10px rgba(155, 27, 112, 0.473);
+    background: rgba(81, 46, 86, 0);
+    box-shadow: -5px 2px 10px rgba(108, 49, 104, 0.227);
     backdrop-filter: blur(10px);
     transition: width 0.2s linear;
     display: none;
@@ -82,12 +82,12 @@ li {
     background-color: #670E57;
     border-radius: 25px;
 }
-.done .deleteButton.close {
+.done .delete-button.close {
     position: absolute;
     right: 10px;
     top: 15px;
 }
-.checkButton, .editButton, .deleteButton, .undoButton {
+.check-button, .edit-button, .delete-button, .undo-button {
     float: right;
     background-color: rgba(109, 83, 170, 0.596);
     box-shadow: none;
@@ -98,22 +98,22 @@ li {
     background-repeat: no-repeat;
     background-position: center;
 }
-.checkButton {
+.check-button {
     background-image: url(icon/check-regular-24.png);
     float: left;
     margin-right: 10px;
 }
-.editButton {
+.edit-button {
     background-image: url(icon/edit-solid-24.png);
 }
-.deleteButton {
+.delete-button {
     background-image: url(icon/x-regular-24.png);
 }
-.undoButton {
+.undo-button {
     background-image: url(icon/undo-regular-24.png);
 }
 @media only screen and (max-width: 600px) {
-    .session .log_Out {
+    .session .log-out {
         float: none;
     }
     .session button {
