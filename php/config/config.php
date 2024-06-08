@@ -29,11 +29,11 @@ if (isset($_SESSION['user'])) {
             $task = $data['task'];
             $isChecked = $data['isChecked'] ? 1 : 0;
 
-            $stmt = $conn->prepare("SELECT task FROM tasks WHERE task = :task");
-            $stmt->execute(['task' => $task]);
+            $stmt = $conn->prepare("SELECT task FROM tasks WHERE task = :task AND task_created_by = :user_id");
+            $stmt->execute(['task' => $task, 'user_id' => $user_id]);
 
             if ($stmt->fetch()) {
-                echo 'Tarea duplicada';
+                echo json_encode(['message' => 'Tarea duplicada']);
             } else {
                 $stmt = $conn->prepare("INSERT INTO tasks (task, is_checked, task_created_by) VALUES (:task, :is_checked, :task_created_by)");
                 $stmt->execute([
@@ -42,7 +42,7 @@ if (isset($_SESSION['user'])) {
                     'task_created_by' => $user_id
                 ]);
 
-                echo "Datos insertados correctamente.";
+                echo json_encode(['message' => 'Datos insertados correctamente.']);
             }
         } else {
             $stmt = $conn->prepare("SELECT task, is_checked FROM tasks WHERE task_created_by = :user_id");
@@ -50,16 +50,15 @@ if (isset($_SESSION['user'])) {
             $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             if ($tasks) {
-                $stmt = $conn->prepare("DELETE FROM tasks WHERE task_created_by = :user_id");
-                $stmt->execute(['user_id' => $user_id]);
                 echo json_encode($tasks);
             } else {
-                echo json_encode(array("empty" => true));
+                echo json_encode(['empty' => true]);
             }
         }
     } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+        echo json_encode(['error' => $e->getMessage()]);
     }
 } else {
-    echo 'No has iniciado sesión';
+    echo json_encode(['error' => 'No has iniciado sesión']);
 }
+?>
