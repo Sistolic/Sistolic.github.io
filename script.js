@@ -2,7 +2,7 @@ function signUp() {
   window.location.href = "php/sign_Up.php";
 }
 function signIn() {
-  window.location.href = "index.php";
+  window.location.href = "/";
 }
 function logOut() {
   fetch('php/config/session.php')
