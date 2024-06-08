@@ -172,50 +172,65 @@ function deleteValue() {
 }
 
 function saveToDB() {
-    const tasksByUser = JSON.parse(localStorage.getItem('tasks'));
+  var tasksByUser = JSON.parse(localStorage.getItem('tasks'));
 
-    if (tasksByUser && tasksByUser.length !== 0) {
-        tasksByUser.forEach(task => {
-            const tasksToDB = {
-                task: task.content,
-                isChecked: task.isChecked
-            };
-
-            fetch('php/config/config.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(tasksToDB),
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                })
-                .catch(error => {
-                    console.error('Error al enviar datos al servidor:', error);
-                });
+  try {
+    if (tasksByUser.length !== 0) {
+      tasksByUser.forEach(task => {
+        var tasksToDB = {
+          task: task.content,
+          isChecked: task.isChecked
+        };
+        
+        fetch('php/config/config.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(tasksToDB),
+        })
+        .then(response => {
+          if (!response.ok) {
+            return response.text().then(text => { throw new Error(text) });
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (data.error) {
+            console.error('Error:', data.error);
+          } else {
+            console.log('Success:', data.success);
+          }
+        })
+        .catch(error => {
+          console.error('Error al enviar datos al servidor:', error);
         });
-    } else {
-        console.log("No hay tareas que agregar.");
+      });
     }
+  } catch (e) {
+    console.log("No hay tareas que agregar.");
+  }
 }
 
 function userTasks() {
-    fetch('php/config/config.php')
-        .then(response => response.json())
-        .then(data => {
-            if (!data.empty) {
-                data.forEach(item => {
-                    const isChecked = Boolean(item.is_checked);
-                    addStorage(item.task, isChecked);
-                });
-                location.reload();
-            } else {
-                alert("No has guardado tareas.");
-            }
-        })
-        .catch(error => {
-            console.error("Error al obtener los datos", error);
+  fetch('php/config/config.php')
+    .then(response => {
+      if (!response.ok) {
+        return response.text().then(text => { throw new Error(text) });
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (!data.empty) {
+        data.forEach(item => {
+          addStorage(item.task, item.is_checked === 1);
         });
+        location.reload();
+      } else {
+        alert("No has guardado tareas.");
+      }
+    })
+    .catch(error => {
+      console.error("Error al obtener los datos", error);
+    });
 }
