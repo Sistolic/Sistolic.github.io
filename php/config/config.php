@@ -11,9 +11,13 @@ if (isset($_SESSION['user'])) {
     $user = $_SESSION['user'];
 
     try {
-        $conn = new PDO($dsn, $DB_USER, $DB_PASSWORD);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
+        $options = [
+            PDO::ATTR_TIMEOUT => 30, // Tiempo de espera en segundos
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        ];
+
+        $conn = new PDO($dsn, $DB_USER, $DB_PASSWORD, $options);
+
         $data = json_decode(file_get_contents('php://input'), true);
 
         $stmt = $conn->prepare("SELECT id FROM user WHERE user = :user");
@@ -41,7 +45,7 @@ if (isset($_SESSION['user'])) {
                 echo "Datos insertados correctamente.";
             }
         } else {
-            $stmt = $conn->prepare("SELECT task FROM tasks WHERE task_created_by = :user_id");
+            $stmt = $conn->prepare("SELECT task, is_checked FROM tasks WHERE task_created_by = :user_id");
             $stmt->execute(['user_id' => $user_id]);
             $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
