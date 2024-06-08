@@ -1,22 +1,22 @@
 <?php
 include 'sign_In_Controller.php';
 
+function int($bool) {
+    return $bool ? 1 : 0;
+}
+
 if (isset($_SESSION['user'])) {
-    $DB_HOST=$_ENV["DB_HOST"] ?? 'default_host';
-    $DB_NAME=$_ENV["DB_NAME"] ?? 'default_db';
-    $DB_USER=$_ENV["DB_USER"] ?? 'default_user';
-    $DB_PASSWORD=$_ENV["DB_PASSWORD"] ?? 'default_password';
+    $DB_HOST = $_ENV["DB_HOST"];
+    $DB_NAME = $_ENV["DB_NAME"];
+    $DB_USER = $_ENV["DB_USER"];
+    $DB_PASSWORD = $_ENV["DB_PASSWORD"];
 
     $dsn = "mysql:host=$DB_HOST;dbname=$DB_NAME";
     $user = $_SESSION['user'];
 
     try {
-        $options = [
-            PDO::ATTR_TIMEOUT => 90,
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        ];
-
-        $conn = new PDO($dsn, $DB_USER, $DB_PASSWORD, $options);
+        $conn = new PDO($dsn, $DB_USER, $DB_PASSWORD);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $data = json_decode(file_get_contents('php://input'), true);
 
@@ -27,28 +27,29 @@ if (isset($_SESSION['user'])) {
 
         if (isset($data['task'])) {
             $task = $data['task'];
-            $isChecked = $data['isChecked'] ? 1 : 0;
+            $isChecked = $data['isChecked'];
+            $convert_int = int($isChecked);
 
-            $stmt = $conn->prepare("SELECT task FROM tasks WHERE task = :task AND task_created_by = :user_id");
-            $stmt->execute(['task' => $task, 'user_id' => $user_id]);
+            $stmt = $conn->prepare("SELECT task FROM tasks WHERE task = :task");
+            $stmt->execute(['task' => $task]);
 
             if ($stmt->fetch()) {
-                echo json_encode(['message' => 'Tarea duplicada']);
+                echo json_encode(['error' => 'Tarea duplicada']);
             } else {
-                $stmt = $conn->prepare("INSERT INTO tasks (task, is_checked, task_created_by) VALUES (:task, :is_checked, :task_created_by)");
+                $stmt = $conn->prepare("INSERT INTO tasks (task, is_checked, task_created_by) VALUES (:task, :is_checked, :user_id)");
                 $stmt->execute([
                     'task' => $task,
-                    'is_checked' => $isChecked,
-                    'task_created_by' => $user_id
+                    'is_checked' => $convert_int,
+                    'user_id' => $user_id
                 ]);
 
-                echo json_encode(['message' => 'Datos insertados correctamente.']);
+                echo json_encode(['success' => 'Datos insertados correctamente.']);
             }
         } else {
-            $stmt = $conn->prepare("SELECT task, is_checked FROM tasks WHERE task_created_by = :user_id");
+            $stmt = $conn->prepare("SELECT task FROM tasks WHERE task_created_by = :user_id");
             $stmt->execute(['user_id' => $user_id]);
-            $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+            $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
             if ($tasks) {
                 echo json_encode($tasks);
             } else {
@@ -61,4 +62,3 @@ if (isset($_SESSION['user'])) {
 } else {
     echo json_encode(['error' => 'No has iniciado sesión']);
 }
-?>
