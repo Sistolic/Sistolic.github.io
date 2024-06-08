@@ -2,10 +2,10 @@
    include 'sign_In_Controller.php';
 
    if (isset($_SESSION['user'])) {
-      $DB_HOST=$_ENV["DB_HOST"];
-      $DB_NAME=$_ENV["DB_NAME"];
-
-      $dsn = "mysql:host='$DB_HOST';dbname='$DB_NAME'";
+      $DB_HOST = $_ENV["DB_HOST"];
+      $DB_NAME = $_ENV["DB_NAME"];
+      
+      $dsn = "mysql:host=$DB_HOST;dbname=$DB_NAME";
       $db_user = $_ENV["DB_USER"];
       $db_password = $_ENV["DB_PASSWORD"];
 
