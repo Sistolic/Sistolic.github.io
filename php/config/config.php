@@ -12,7 +12,7 @@ if (isset($_SESSION['user'])) {
 
     try {
         $options = [
-            PDO::ATTR_TIMEOUT => 60,
+            PDO::ATTR_TIMEOUT => 90,
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         ];
 
