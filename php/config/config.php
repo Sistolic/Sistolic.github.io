@@ -5,6 +5,8 @@ function int($bool) {
     return $bool ? 1 : 0;
 }
 
+header('Content-Type: application/json');
+
 if (isset($_SESSION['user'])) {
     $DB_HOST = $_ENV["DB_HOST"];
     $DB_NAME = $_ENV["DB_NAME"];
