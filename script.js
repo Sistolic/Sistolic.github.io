@@ -11,7 +11,7 @@ function logOut() {
         .then(response => response.json())
         .then(data => {
             if (data.sesion_activa) {
-                if (window.confirm("Restaurar tareas / Salir")) {
+                if (window.confirm("Restaurar / Salir")) {
                     userTasks();
                 } else {
                     saveToDB();
