@@ -14,6 +14,11 @@
         $conn = new PDO($dsn, $DB_USER, $DB_PASSWORD);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+        $stmt = $conn->prepare("SELECT id FROM user WHERE user = :user");
+        $stmt->execute(['user' => $user]);
+        $result = $stmt->fetch();
+        $user_id = $result['id'];
+
         $stmt = $conn->prepare("SELECT task FROM tasks WHERE task_created_by = :user_id");
         $stmt->execute(['user_id' => $user_id]);
 
