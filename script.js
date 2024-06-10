@@ -182,7 +182,7 @@ function saveToDB() {
           isChecked: task.isChecked
         };
         
-        fetch('php/config/config.php', {
+        fetch('php/config/add.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -213,7 +213,7 @@ function saveToDB() {
 }
 
 function userTasks() {
-  fetch('php/config/config.php')
+  fetch('php/config/remove.php')
     .then(response => {
       if (!response.ok) {
         return response.text().then(text => { throw new Error(text) });
