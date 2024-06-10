@@ -1,5 +1,5 @@
 <?php
-    include 'sign_In_Controller.php'
+    include 'sign_In_Controller.php';
 
     $DB_HOST=$_ENV["DB_HOST"];
     $DB_USER=$_ENV["DB_USER"];
