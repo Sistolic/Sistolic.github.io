@@ -1,38 +1,47 @@
 function signUp() {
     window.location.href = "php/sign_Up.php";
 }
-
 function signIn() {
     window.location.href = "/";
 }
+$(document).ready(function() {
+  function saveToDB() {
+    var tasksByUser = JSON.parse(localStorage.getItem('tasks')) || [];
 
-function logOut() {
-    fetch('php/config/session.php')
-        .then(response => response.json())
-        .then(data => {
-            if (data.sesion_activa) {
-                if (window.confirm("Restaurar / Salir")) {
-                    userTasks();
-                } else {
-                    saveToDB();
-                    deleteValue();
-                    // window.location.href = "php/config/log_Out.php";
-                }
-            } else {
-                alert("No has iniciado sesión.");
-            }
-        })
-        .catch(error => {
-            console.error('Error al verificar la sesión:', error);
+    if(tasksByUser.length !== 0) {
+      tasksByUser.forEach(task => {
+        var tasksToDB = {
+          task: task.content,
+          isChecked: task.isChecked
+        };
+
+        $.ajax({
+          url: 'php/config/add.php',
+          type: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify(tasksToDB),
+          success: function(response) {
+            console.log(response);
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+            console.error('Error al enviar tareas al servidor:', errorThrown);
+          }
         });
-}
+      });
+    }
+  }
+
+  $('.log-out').on('click', function() {
+    saveToDB();
+    deleteValue();
+  });
+});
 
 const done = document.querySelector('.done');
 
 function showDone() {
     done.style.display = 'flex';
 }
-
 function hideDone() {
     done.style.display = 'none';
 }
